@@ -1,0 +1,6 @@
+<h1>Select Borrower</h1>
+
+<%= form_tag loans_borrower_step_path do %>
+  <%= collection_select(:loan, :borrower_id, @users, :id, :full_name, prompt: true) %>
+  <%= submit_tag %>
+<% end %>
