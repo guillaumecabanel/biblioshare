@@ -1,0 +1,12 @@
+<h1>Select Borrower</h1>
+
+<%= form_tag loans_borrower_step_path do %>
+  <% @users.each do |user| %>
+    <div>
+      <%= radio_button_tag(:user, user.id) %>
+      <%= label_tag(dom_id(user), user.full_name) %>
+    </div>
+  <% end %>
+
+  <%= submit_tag %>
+<% end %>

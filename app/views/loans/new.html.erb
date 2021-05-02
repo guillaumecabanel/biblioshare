@@ -1,0 +1,6 @@
+<%= form_with model: @loan do |f| %>
+  <%= f.hidden_field :borrower_id, value: @loan.borrower_id %>
+  <%= f.hidden_field :isbn, value: @loan.isbn %>
+  <p>Loan <%= @loan.isbn %> to <%= @loan.borrower.full_name %></p>
+  <%= f.submit %>
+<% end %>
