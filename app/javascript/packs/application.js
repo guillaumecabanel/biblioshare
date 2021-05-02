@@ -9,3 +9,7 @@ import "channels"
 
 Rails.start()
 Turbolinks.start()
+
+import Quagga from 'quagga'; // ES6
+
+import "controllers"
