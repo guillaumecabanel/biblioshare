@@ -1,6 +1,15 @@
 <%= form_with model: @loan do |f| %>
   <%= f.hidden_field :borrower_id, value: @loan.borrower_id %>
   <%= f.hidden_field :isbn, value: @loan.isbn %>
-  <p>Loan <%= @loan.isbn %> to <%= @loan.borrower.full_name %></p>
+  <%= f.hidden_field :title, value: @loan.title %>
+  <%= f.hidden_field :author, value: @loan.author %>
+
+  <div>
+    loan
+    <%= @loan.title %>
+    (<%= @loan.author %>)
+    to <%= @loan.borrower.full_name %>?
+  </div>
+
   <%= f.submit %>
 <% end %>
