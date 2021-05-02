@@ -1,6 +1,7 @@
 <h1>Select Book isbn</h1>
-
-<%= form_tag loans_isbn_step_path do %>
-  <%= text_field_tag :isbn %>
-  <%= submit_tag %>
-<% end %>
+<div data-controller="barcode-scanner">
+  <div data-barcode-scanner-target="camArea" id="cam-area"></div>
+  <%= form_tag loans_isbn_step_path, data: { barcode_scanner_target: "form" } do %>
+    <%= hidden_field_tag :isbn, '', data: { barcode_scanner_target: "input"} %>
+  <% end %>
+</div>

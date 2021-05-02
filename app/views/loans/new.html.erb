@@ -5,8 +5,8 @@
   <%= f.hidden_field :author, value: @loan.author %>
 
   <div>
-    loan
-    <%= @loan.title %>
+    Loan
+    <strong><%= @loan.title %></strong>
     (<%= @loan.author %>)
     to <%= @loan.borrower.full_name %>?
   </div>
