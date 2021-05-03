@@ -10,12 +10,16 @@ class LoansController < ApplicationController
     response = HTTParty.get("http://openlibrary.org/api/volumes/brief/isbn/#{isbn}.json")
     book = JSON.parse(response.body, symbolize_names: true)
 
-    @loan = Loan.new(
-      borrower_id: session[:loan]["borrower_id"],
-      isbn: isbn,
-      title: book[:records].values.first[:data][:title],
-      author: book[:records].values.first[:data][:authors].map { |author| author[:name] }.to_sentence
-    )
+    if book == []
+      redirect_to loans_isbn_step_path(retry: true)
+    else
+      @loan = Loan.new(
+        borrower_id: session[:loan]["borrower_id"],
+        isbn: isbn,
+        title: book[:records].values.first[:data][:title],
+        author: book[:records].values.first[:data][:authors].map { |author| author[:name] }.to_sentence
+      )
+    end
   end
 
   def create

@@ -35,7 +35,7 @@ export default class extends Controller {
         console.log("Initialization finished. Ready to start");
 
         Quagga.onDetected((data) => {
-          if (data.codeResult.code.length > 12) {
+          if (data.codeResult.startInfo.error < 0.1) {
             this.inputTarget.value = data.codeResult.code;
             Quagga.stop();
             this.formTarget.submit();
