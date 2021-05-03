@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   end
 
   resources :loans, only: [:index, :new, :create, :destroy]
+  resources :borrowed_books, only: [:index]
 end
