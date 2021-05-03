@@ -1,0 +1,9 @@
+<h2>Ongoing loans</h2>
+
+<%= render @loans %>
+
+<% if @loans.empty? %>
+  <p>No ongoing loans</p>
+
+  <%= link_to 'Loan a book!', loans_borrower_step_path, style: "margin-top: 2rem" %>
+<% end %>

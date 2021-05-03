@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.find_or_create_by(user_params)
     set_user(@user)
 
-    redirect_to new_loan_path
+    redirect_to root_path
   end
 
   private

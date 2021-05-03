@@ -1,0 +1,8 @@
+<section style="display: flex; align-items: center">
+  <p>
+    <strong><%= loan.title %></strong>
+    (<%= loan.author %>)
+    loaned to <%= loan.borrower.full_name %>
+  </p>
+  <%= link_to 'I got it back', loan_path(loan), method: :delete, style: "margin-left: 1rem" %>
+</section>

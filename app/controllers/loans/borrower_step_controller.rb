@@ -2,7 +2,7 @@ class Loans::BorrowerStepController < ApplicationController
   before_action :require_user
 
   def show
-    @users = User.all
+    @users = User.where.not(id: current_user.id)
 
     render 'loans/borrower_step'
   end

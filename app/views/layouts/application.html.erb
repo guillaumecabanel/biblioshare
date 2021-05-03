@@ -10,7 +10,16 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body style="margin: 5rem">
-    <%= yield %>
+  <body style="margin-left: 5rem; margin-top: 1rem">
+    <h1>Bookiz</h1>
+
+    <% if current_user %>
+      <%= link_to_unless_current 'Home', root_path %>
+      <%= link_to_unless_current 'Loans', loans_path %>
+    <% end %>
+
+    <div style="margin-top: 3rem">
+      <%= yield %>
+    </div>
   </body>
 </html>

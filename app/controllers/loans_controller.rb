@@ -1,10 +1,6 @@
 class LoansController < ApplicationController
   before_action :require_user
 
-  def show
-    @loan = Loan.find(params[:id])
-  end
-
   def new
     isbn = session[:loan]["isbn"]
     response = HTTParty.get("http://openlibrary.org/api/volumes/brief/isbn/#{isbn}.json")
@@ -28,7 +24,18 @@ class LoansController < ApplicationController
 
     @loan.save
 
-    redirect_to loan_path(@loan)
+    redirect_to loans_path
+  end
+
+  def index
+    @loans = current_user.loaned_books
+  end
+
+  def destroy
+    @loan = Loan.find(params[:id])
+    @loan.destroy
+
+    redirect_to loans_path
   end
 
   private

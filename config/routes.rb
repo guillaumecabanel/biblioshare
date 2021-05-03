@@ -8,5 +8,5 @@ Rails.application.routes.draw do
     resource :isbn_step,     only: [:show, :create], controller: "isbn_step"
   end
 
-  resources :loans, only: [:show, :new, :create]
+  resources :loans, only: [:index, :new, :create, :destroy]
 end
