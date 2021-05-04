@@ -91,6 +91,5 @@ production:
   # Cache manifest.json for performance
   cache_manifest: true
 
-  performance: {
-      hints: true,
-    },
+  performance:
+    hints: true
