@@ -1,8 +1,4 @@
-<h1>Select Book isbn</h1>
-
-<% if params[:retry] == 'true' %>
-  <p>Scan failed, please retry</p>
-<% end %>
+<h2><%= t(".title") %></h2>
 
 <div data-controller="barcode-scanner">
   <div data-barcode-scanner-target="camArea" id="cam-area"></div>
@@ -10,3 +6,7 @@
     <%= hidden_field_tag :isbn, '', data: { barcode_scanner_target: "input"} %>
   <% end %>
 </div>
+
+<% if params[:retry] == 'true' %>
+  <p><%= t(".retry") %></p>
+<% end %>

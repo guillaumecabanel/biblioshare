@@ -1,7 +1,7 @@
-<h2>Borrowed books</h2>
+<h2><%= t(".title") %></h2>
 
 <%= render partial: "borrowed_book", collection: @borrowed_books %>
 
 <% if @borrowed_books.empty? %>
-  <p>No borrowed books.</p>
+  <p><%= t(".no_data") %></p>
 <% end %>

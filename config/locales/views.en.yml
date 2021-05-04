@@ -1,0 +1,31 @@
+en:
+  layout:
+    application:
+      home: Home
+      loans: Loans
+      borrowed_books: Borrowed books
+  borrowed_books:
+    borrowed_book:
+      borrowed_from: borrowed from
+    index:
+      title: Borrowed books
+      no_data: No borrowed books.
+  homepage:
+    show:
+      greetings: Hello
+      loan_a_book: Loan a book
+  loans:
+    loan:
+      loaned_to: loaned to
+      i_got_it_back: I got it back
+    index:
+      title: Ongoing loans
+      no_data: No ongoing loans.
+      loan_a_book: Loan a book!
+    new:
+      loan: Loan
+    borrower_step:
+      title: Select Borrower
+    isbn_step:
+      title: Select book ISBN
+      retry: Scan failed, please retry

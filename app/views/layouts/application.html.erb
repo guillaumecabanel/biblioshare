@@ -14,9 +14,9 @@
     <h1>Bookiz</h1>
 
     <% if current_user %>
-      <%= link_to_unless_current 'Home', root_path %>
-      <%= link_to_unless_current 'Loans', loans_path %>
-      <%= link_to_unless_current 'Borrowed books', borrowed_books_path %>
+      <%= link_to_unless_current t(".home"), root_path %>
+      <%= link_to_unless_current t(".loans"), loans_path %>
+      <%= link_to_unless_current t(".borrowed_books"), borrowed_books_path %>
     <% end %>
 
     <div style="margin-top: 3rem">

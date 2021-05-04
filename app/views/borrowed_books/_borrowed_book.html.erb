@@ -1,5 +1,5 @@
 <p>
   <strong><%= borrowed_book.title %></strong>
   (<%= borrowed_book.author %>)
-  borrowed from <%= borrowed_book.lender.full_name %>
+  <%= t(".borrowed_from") %> <%= borrowed_book.lender.full_name %>
 </p>
