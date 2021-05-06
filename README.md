@@ -1,3 +1,5 @@
 # Biblioshare
 
-https://app.bibliosha.re
+https://biblioshare.herokuapp.com
+
+
