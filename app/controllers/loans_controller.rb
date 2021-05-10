@@ -24,7 +24,20 @@ class LoansController < ApplicationController
 
     @loan.save
 
-    redirect_to loans_path
+    respond_to do |format|
+      format.turbo_stream do
+        # render turbo_stream: turbo_stream.append(:loans, partial: "loans/loan", locals: { loan: @loan })
+        # @loan.broadcast_append_to current_user, :loans, partial: "loans/loan", locals: { loan: @loan }
+        @loan.broadcast_append_to(@loan.borrower, :borrowed_books,
+          partial: "borrowed_books/borrowed_book",
+          locals: { borrowed_book: @loan },
+          target: "borrowed_books"
+        )
+        redirect_to loans_path
+      end
+
+      format.html { redirect_to loans_path}
+    end
   end
 
   def index
@@ -35,7 +48,16 @@ class LoansController < ApplicationController
     @loan = Loan.find(params[:id])
     @loan.destroy
 
-    redirect_to loans_path
+    respond_to do |format|
+      format.turbo_stream do
+        # render turbo_stream: turbo_stream.remove(@loan)
+        @loan.broadcast_remove_to current_user, :loans
+        @loan.broadcast_remove_to @loan.borrower, :borrowed_books
+      end
+
+      format.html { redirect_to loans_path }
+    end
+
   end
 
   private

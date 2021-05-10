@@ -1,5 +1,5 @@
 import { Controller } from "stimulus";
-import Quagga from 'quagga/dist/quagga';
+import Quagga from "quagga/dist/quagga";
 
 export default class extends Controller {
   static targets = [ "camArea", "form", "input" ]
@@ -32,7 +32,6 @@ export default class extends Controller {
             console.log(err);
             return
         }
-        console.log("Initialization finished. Ready to start");
 
         Quagga.onDetected((data) => {
           if (data.codeResult.startInfo.error < 0.1) {
@@ -43,5 +42,9 @@ export default class extends Controller {
         });
         Quagga.start();
     });
+  };
+
+  disconnect() {
+    Quagga.stop();
   }
 }

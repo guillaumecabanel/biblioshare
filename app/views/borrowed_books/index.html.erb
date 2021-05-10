@@ -1,6 +1,10 @@
 <h2><%= t(".title") %></h2>
 
-<%= render partial: "borrowed_book", collection: @borrowed_books %>
+<%= turbo_stream_from current_user, :borrowed_books %>
+<div id="borrowed_books">
+  <%= render partial: "borrowed_books/borrowed_book", collection: @borrowed_books %>
+</div>
+
 
 <% if @borrowed_books.empty? %>
   <p><%= t(".no_data") %></p>

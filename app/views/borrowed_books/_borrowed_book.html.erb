@@ -1,5 +1,7 @@
-<p>
-  <strong><%= borrowed_book.title %></strong>
-  (<%= borrowed_book.author %>)
-  <%= t(".borrowed_from") %> <%= borrowed_book.lender.full_name %>
-</p>
+<section id="<%= dom_id(borrowed_book) %>">
+  <p>
+    <strong><%= borrowed_book.title %></strong>
+    (<%= borrowed_book.author %>)
+    <%= t(".borrowed_from") %> <%= borrowed_book.lender.full_name %>
+  </p>
+</section>
