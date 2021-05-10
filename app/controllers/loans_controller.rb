@@ -52,7 +52,7 @@ class LoansController < ApplicationController
       format.turbo_stream do
         # render turbo_stream: turbo_stream.remove(@loan)
         @loan.broadcast_remove_to current_user, :loans
-        @loan.broadcast_remove_to @loan.borrower, :borrowed_books
+        @loan.broadcast_remove_to @loan.borrower, :borrowed_books, target: "borrowed_books"
       end
 
       format.html { redirect_to loans_path }
