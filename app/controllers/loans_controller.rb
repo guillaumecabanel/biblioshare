@@ -3,7 +3,7 @@ class LoansController < ApplicationController
 
   def new
     isbn = session[:loan]["isbn"]
-    response = HTTParty.get("http://openlibrary.org/api/volumes/brief/isbn/#{isbn}.json")
+    response = HTTParty.get("https://openlibrary.org/api/volumes/brief/isbn/#{isbn}.json")
     book = JSON.parse(response.body, symbolize_names: true)
 
     if book == []
