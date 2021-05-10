@@ -1,4 +1,5 @@
-<section id="<%= dom_id(borrowed_book) %>">
+<section id="<%= dom_id(borrowed_book) %>" style="display: flex; align-items: center">
+  <%= image_tag borrowed_book.picture_url || "https://via.placeholder.com/180x260", title: borrowed_book.title %>
   <p>
     <strong><%= borrowed_book.title %></strong>
     (<%= borrowed_book.author %>)

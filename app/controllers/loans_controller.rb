@@ -4,16 +4,19 @@ class LoansController < ApplicationController
   def new
     isbn = session[:loan]["isbn"]
     response = HTTParty.get("https://openlibrary.org/api/volumes/brief/isbn/#{isbn}.json")
-    book = JSON.parse(response.body, symbolize_names: true)
+    book_data = JSON.parse(response.body, symbolize_names: true)
 
-    if book == []
+    if book_data == []
       redirect_to loans_isbn_step_path(retry: true)
     else
+      book = book_data[:records].values.first[:data]
+
       @loan = Loan.new(
         borrower_id: session[:loan]["borrower_id"],
         isbn: isbn,
-        title: book[:records].values.first[:data][:title],
-        author: book[:records].values.first[:data][:authors].map { |author| author[:name] }.to_sentence
+        title: book[:title],
+        author: book[:authors].map { |author| author[:name] }.to_sentence,
+        picture_url: book.dig(:cover, :medium) || ""
       )
     end
   end
@@ -52,7 +55,7 @@ class LoansController < ApplicationController
       format.turbo_stream do
         # render turbo_stream: turbo_stream.remove(@loan)
         @loan.broadcast_remove_to current_user, :loans
-        @loan.broadcast_remove_to @loan.borrower, :borrowed_books, target: "borrowed_books"
+        @loan.broadcast_remove_to @loan.borrower, :borrowed_books
       end
 
       format.html { redirect_to loans_path }
@@ -63,6 +66,6 @@ class LoansController < ApplicationController
   private
 
   def loan_params
-    params.require(:loan).permit(:borrower_id, :isbn, :title, :author)
+    params.require(:loan).permit(:borrower_id, :isbn, :title, :author, :picture_url)
   end
 end

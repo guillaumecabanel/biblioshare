@@ -3,8 +3,10 @@
   <%= f.hidden_field :isbn, value: @loan.isbn %>
   <%= f.hidden_field :title, value: @loan.title %>
   <%= f.hidden_field :author, value: @loan.author %>
+  <%= f.hidden_field :picture_url, value: @loan.picture_url %>
 
   <div>
+    <%= image_tag @loan.picture_url, title: @loan.title %>
     <%= t(".loan") %>
     <strong><%= @loan.title %></strong>
     (<%= @loan.author %>)
