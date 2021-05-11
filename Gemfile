@@ -30,6 +30,7 @@ gem 'stimulus-rails'
 gem 'turbo-rails'
 
 group :development, :test do
+  gem 'pry-byebug'
   gem 'dotenv-rails'
 end
 
