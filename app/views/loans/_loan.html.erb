@@ -1,5 +1,5 @@
 <section id="<%= dom_id(loan) %>" style="display: flex; align-items: center">
-  <%= image_tag loan.picture_url || "https://via.placeholder.com/180x260", title: loan.title %>
+  <%= image_tag loan.picture_url.presence || "https://via.placeholder.com/180x260", title: loan.title %>
 
   <p>
     <strong><%= loan.title %></strong>

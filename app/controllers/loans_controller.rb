@@ -2,24 +2,12 @@ class LoansController < ApplicationController
   before_action :require_user
 
   def new
-    isbn = session[:loan]["isbn"]
+    @isbn = session[:loan]["isbn"]
 
-    response = HTTParty.get("https://www.googleapis.com/books/v1/volumes?q=isbn:#{isbn}&key=#{ENV["GOOGLE_BOOK_API"]}")
-    book_data = JSON.parse(response.body, symbolize_names: true)
+    @loan = Loan.new(book_params_from_openlibrary.merge(book_params_from_google.compact))
+    @loan.lender = current_user
 
-    if book_data[:totalItems].zero?
-      redirect_to loans_isbn_step_path(retry: true)
-    else
-      book = book_data[:items].first
-
-      @loan = Loan.new(
-        borrower_id: session[:loan]["borrower_id"],
-        isbn: isbn,
-        title: book.dig(:volumeInfo, :title),
-        author: book.dig(:volumeInfo, :authors)&.to_sentence,
-        picture_url: book.dig(:imageLinks, :medium) || ""
-      )
-    end
+    redirect_to loans_isbn_step_path(retry: true, isbn: @isbn) if @loan.invalid?
   end
 
   def create
@@ -68,5 +56,39 @@ class LoansController < ApplicationController
 
   def loan_params
     params.require(:loan).permit(:borrower_id, :isbn, :title, :author, :picture_url)
+  end
+
+  def book_params_from_google
+    response = HTTParty.get("https://www.googleapis.com/books/v1/volumes?q=isbn:#{@isbn}&key=#{ENV["GOOGLE_BOOK_API"]}")
+    book_data = JSON.parse(response.body, symbolize_names: true)
+
+    return if book_data[:totalItems].zero?
+
+    book = book_data[:items].first
+
+    {
+      borrower_id: session[:loan]["borrower_id"],
+      isbn:        @isbn,
+      title:       book.dig(:volumeInfo, :title),
+      author:      book.dig(:volumeInfo, :authors)&.to_sentence,
+      picture_url: book.dig(:imageLinks, :medium)
+    }
+  end
+
+  def book_params_from_openlibrary
+    response = HTTParty.get("https://openlibrary.org/api/volumes/brief/isbn/#{@isbn}.json")
+    book_data = JSON.parse(response.body, symbolize_names: true)
+
+    return if !book_data.present?
+
+    book = book_data[:records].values.first[:data]
+
+    {
+      borrower_id: session[:loan]["borrower_id"],
+      isbn: @isbn,
+      title: book[:title],
+      author: book[:authors].map { |author| author[:name] }.to_sentence,
+      picture_url: book.dig(:cover, :medium) || ""
+    }
   end
 end
