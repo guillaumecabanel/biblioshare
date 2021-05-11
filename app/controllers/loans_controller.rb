@@ -3,20 +3,21 @@ class LoansController < ApplicationController
 
   def new
     isbn = session[:loan]["isbn"]
-    response = HTTParty.get("https://openlibrary.org/api/volumes/brief/isbn/#{isbn}.json")
+
+    response = HTTParty.get("https://www.googleapis.com/books/v1/volumes?q=isbn:#{isbn}&key=#{ENV["GOOGLE_BOOK_API"]}")
     book_data = JSON.parse(response.body, symbolize_names: true)
 
-    if book_data == []
+    if book_data[:totalItems].zero?
       redirect_to loans_isbn_step_path(retry: true)
     else
-      book = book_data[:records].values.first[:data]
+      book = book_data[:items].first
 
       @loan = Loan.new(
         borrower_id: session[:loan]["borrower_id"],
         isbn: isbn,
-        title: book[:title],
-        author: book[:authors].map { |author| author[:name] }.to_sentence,
-        picture_url: book.dig(:cover, :medium) || ""
+        title: book.dig(:volumeInfo, :title),
+        author: book.dig(:volumeInfo, :authors)&.to_sentence,
+        picture_url: book.dig(:imageLinks, :medium) || ""
       )
     end
   end
