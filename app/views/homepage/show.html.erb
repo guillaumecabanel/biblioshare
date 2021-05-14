@@ -1,3 +1,11 @@
-<p><%= t(".greetings") %> <%= current_user.full_name %>.</p>
+<h2 class="greetings">
+  <%= greetings %>, <br>
+  <%= current_user.full_name %>
+</h2>
 
-<%= link_to t(".loan_a_book"), loans_borrower_step_path, style: "margin-top: 2rem" %>
+<div style="margin-top: 3rem; display: inline-block">
+  <%= link_to loans_borrower_step_path, class: "action" do %>
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+    <span><%=  t(".loan_a_book") %></span>
+  <% end %>
+</div>
