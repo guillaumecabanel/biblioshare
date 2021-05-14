@@ -62,7 +62,7 @@ class LoansController < ApplicationController
     response = HTTParty.get("https://www.googleapis.com/books/v1/volumes?q=isbn:#{@isbn}&key=#{ENV["GOOGLE_BOOK_API"]}")
     book_data = JSON.parse(response.body, symbolize_names: true)
 
-    return if book_data[:totalItems].zero?
+    return {} if book_data[:totalItems].zero?
 
     book = book_data[:items].first
 
