@@ -1,5 +1,5 @@
 en:
-  layout:
+  layouts:
     application:
       home: Home
       loans: Loans
@@ -16,7 +16,7 @@ en:
       loan_a_book: Loan a book
   loans:
     loan:
-      loaned_to: loaned to
+      loaned_to: Loaned to
       i_got_it_back: I got it back
     index:
       title: Ongoing loans

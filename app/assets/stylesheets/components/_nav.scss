@@ -1,0 +1,41 @@
+nav {
+  position: sticky;
+  top: 0;
+  background-color: $cool-gray-100;
+  display: flex;
+  align-items: center;
+
+  ul {
+    display: flex;
+    align-items: center;
+    padding: .5rem 0;
+
+    li {
+      margin-left: 1rem;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      p, a {
+        border-radius: 8px;
+        padding: .5rem 1rem;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        letter-spacing: 0.025em;
+        font-weight: 500;
+      }
+
+      p {
+        color: black;
+        background-color: white;
+        box-shadow: $box-shadow-sm;
+      }
+
+      a{
+        color: $cool-gray-600;
+        text-decoration: none;
+      }
+    }
+  }
+}

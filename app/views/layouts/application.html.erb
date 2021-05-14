@@ -10,16 +10,21 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body style="margin-left: 1rem; margin-top: 1rem">
-    <h1>Biblioshare</h1>
-
+  <body>
     <% if current_user %>
-      <%= link_to_unless_current t(".home"), root_path %>
-      <%= link_to_unless_current t(".loans"), loans_path %>
-      <%= link_to_unless_current t(".borrowed_books"), borrowed_books_path %>
+      <div class="user-avatar"><%= current_user.initials %></div>
     <% end %>
+    <nav>
+      <ul>
+        <% if current_user %>
+          <li><%= link_to_unless_current(t(".home"), root_path){ |name| tag.p name } %></li>
+          <li><%= link_to_unless_current(t(".loans"), loans_path){ |name| tag.p name } %></li>
+          <li><%= link_to_unless_current(t(".borrowed_books"), borrowed_books_path){ |name| tag.p name } %></li>
+        <% end %>
+      </ul>
+    </nav>
 
-    <div style="margin-top: 3rem">
+    <div>
       <%= yield %>
     </div>
   </body>

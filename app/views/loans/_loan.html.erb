@@ -1,10 +1,15 @@
-<section id="<%= dom_id(loan) %>" style="display: flex; align-items: center">
+<section id="<%= dom_id(loan) %>" class="loan">
   <%= image_tag loan.picture_url.presence || "https://via.placeholder.com/180x260", title: loan.title %>
 
-  <p>
-    <strong><%= loan.title %></strong>
-    (<%= loan.author %>)
-    <%= t(".loaned_to") %> <%= loan.borrower.full_name %>
-  </p>
-  <%= link_to t(".i_got_it_back"), loan_path(loan), method: :delete, style: "margin-left: 1rem" %>
+  <div class="right">
+    <p><%= t(".loaned_to") %> <span class="borrower"><%= loan.borrower.full_name %></span></p>
+    <%= link_to loan_path(loan), method: :delete, class: "action" do %>
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+      <span><%= t(".i_got_it_back") %><span>
+    <% end %>
+    <div class="details">
+      <div class="title"><%= loan.title %></div>
+      <div class="author"><%= loan.author %></div>
+    </div>
+  </div>
 </section>

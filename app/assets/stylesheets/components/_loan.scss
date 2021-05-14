@@ -1,0 +1,89 @@
+#loans {
+  margin-top: 1rem;
+}
+
+.loan {
+  margin-bottom: 2rem;
+  display: flex;
+  box-shadow: $box-shadow-sm;
+  border-radius: 4px;
+  background-color: white;
+  width: 100%;
+
+  img {
+    border-radius: 8px;
+    width: 128px;
+    height: 100%;
+  }
+
+  .action {
+    margin: .5rem 0;
+    border-radius: 4px;
+    background-color: $primary-100;
+    color: $primary-600;
+    padding: .5rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 500;
+    box-shadow: $box-shadow-sm;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    display: flex;
+
+    svg {
+      margin-right: .5rem;
+      height: 1.25rem;
+    }
+  }
+
+  .right {
+    padding: .5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  p {
+    font-weight: 600;
+    color: $cool-gray-800;
+
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  span.borrower {
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    font-weight: 600;
+    color: $cool-gray-600;
+
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .title, .author {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  .title {
+    color: $cool-gray-700;
+  }
+
+  .author {
+    color: $cool-gray-400;
+  }
+}
+
+@media (min-width: 768px) {
+  .loan {
+    p {
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
+
+    span.borrower {
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+  }
+}
