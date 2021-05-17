@@ -24,7 +24,7 @@ en:
     index:
       title: Ongoing loans
       no_data: No ongoing loans.
-      loan_a_book: Loan a book!
+      loan_a_book: Loan a book
     new:
       title: Confirm new loan
       create: Confirm

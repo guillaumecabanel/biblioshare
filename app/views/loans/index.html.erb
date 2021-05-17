@@ -8,5 +8,5 @@
 <% if @loans.empty? %>
   <p><%= t(".no_data") %></p>
 
-  <%= link_to t(".loan_a_book!"), loans_borrower_step_path, style: "margin-top: 2rem" %>
+  <%= link_to t(".loan_a_book"), loans_borrower_step_path, class: 'action', style: "margin-top: 2rem" %>
 <% end %>
