@@ -1,5 +1,5 @@
 <section id="<%= dom_id(borrowed_book) %>" class="loan">
-  <%= image_tag borrowed_book.picture_url.presence || "https://via.placeholder.com/180x260", title: borrowed_book.title, height: 260, width: 180 %>
+  <%= image_tag borrowed_book.picture_url.presence || "", title: borrowed_book.title %>
 
   <div class="right">
     <p><%= t(".borrowed_from") %> <span class="borrower"><%= borrowed_book.lender.full_name %></span></p>

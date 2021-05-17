@@ -14,7 +14,7 @@
   <%= f.hidden_field :picture_url, value: @loan.picture_url %>
 
   <section class="loan">
-    <%= image_tag @loan.picture_url.presence || "https://via.placeholder.com/180x260", title: @loan.title %>
+    <%= image_tag @loan.picture_url.presence || "", title: @loan.title %>
 
     <div class="right">
       <p><%= t(".loan_to?_html", name: @loan.borrower.full_name) %></p>
