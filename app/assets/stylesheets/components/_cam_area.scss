@@ -1,0 +1,15 @@
+#cam-area {
+  margin-top: 1rem;
+  position: relative;
+
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  video, canvas {
+    width: 100%;
+    object-fit: none;
+  }
+}

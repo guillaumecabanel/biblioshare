@@ -6,11 +6,11 @@ export default class extends Controller {
 
   connect() {
     Quagga.init({
+      locate: true,
       inputStream : {
         name : "Live",
         type : "LiveStream",
-        numOfWorkers: navigator.hardwareConcurrency,
-        target: this.camAreaTarget
+        target: this.camAreaTarget,
       },
       decoder : {
         readers : [
@@ -25,7 +25,10 @@ export default class extends Controller {
           "i2of5_reader",
           "2of5_reader",
           "code_93_reader"
-        ]
+        ],
+        debug: {
+          drawBoundingBox: true,
+        }
       }
     }, (err) => {
         if (err) {
