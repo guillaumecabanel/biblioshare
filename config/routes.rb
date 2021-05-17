@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
   root to: "homepage#show"
-
-  resources :users, only: [:new, :create]
 
   namespace :loans do
     resource :borrower_step, only: [:show, :create], controller: "borrower_step"
@@ -10,4 +9,6 @@ Rails.application.routes.draw do
 
   resources :loans, only: [:index, :new, :create, :destroy]
   resources :borrowed_books, only: [:index]
+
+  resource :settings, only: [:show]
 end

@@ -1,6 +1,4 @@
 class LoansController < ApplicationController
-  before_action :require_user
-
   def new
     @isbn = session[:loan]["isbn"]
 

@@ -7,6 +7,8 @@
   background-color: $cool-gray-500;
   color: white;
   text-align: center;
+  display: block;
+  text-decoration: none;
 }
 
 .user-select {
@@ -27,5 +29,19 @@
     & > div:first-child {
       margin-right: 1rem;
     }
+  }
+}
+
+.profile {
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .email {
+    color: $cool-gray-500;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
   }
 }

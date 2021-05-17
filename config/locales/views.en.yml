@@ -4,6 +4,9 @@ en:
       home: Home
       loans: Loans
       borrowed_books: Borrowed books
+  settings:
+    show:
+      title: Settings
   borrowed_books:
     borrowed_book:
       borrowed_from: Borrowed from

@@ -1,14 +1,11 @@
 class ApplicationController < ActionController::Base
-  def set_user(user)
-    session[:user_id] = user.id
-  end
+  before_action :authenticate_user!
 
-  def current_user
-    User.find_by(id: session[:user_id])
+  def display_menu?
+    !controller_name.include?('step') && \
+    !controller_name.include?('settings') && \
+    !action_name.include?('new')
   end
-  helper_method :current_user
+  helper_method :display_menu?
 
-  def require_user
-    current_user || redirect_to(new_user_path)
-  end
 end

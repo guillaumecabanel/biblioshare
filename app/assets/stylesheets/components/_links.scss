@@ -5,9 +5,13 @@
   }
 }
 
-.action {
+.actions {
+  margin-top: 2rem;
+}
+
+.actions input[type="submit"], .links a, .action {
   margin: .5rem 0;
-  border: none;
+  border: 1px solid $primary-100;
   border-radius: 4px;
   background-color: $primary-100;
   color: $primary-600;
@@ -21,7 +25,20 @@
   display: flex;
   cursor: pointer;
   width: max-content;
+}
 
+.actions input[type="submit"] {
+  width: 100%;
+}
+
+.links a, .action.link {
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+  padding: .5rem 0;
+}
+
+.action {
   svg {
     margin-right: .5rem;
     height: 1.25rem;

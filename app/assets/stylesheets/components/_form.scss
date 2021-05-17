@@ -1,0 +1,19 @@
+.field {
+  margin-top: 1rem;
+
+  label {
+    display: block;
+  }
+  input {
+    width: 100%;
+
+    &[type="checkbox"] {
+      display: inline;
+      width: inherit;
+    }
+
+    &+label {
+      display: inline;
+    }
+  }
+}

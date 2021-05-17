@@ -28,6 +28,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'httparty'
 gem 'stimulus-rails'
 gem 'turbo-rails'
+gem 'devise'
+gem 'devise-i18n'
 
 group :development, :test do
   gem 'pry-byebug'

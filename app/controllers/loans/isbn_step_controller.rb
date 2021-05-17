@@ -1,6 +1,4 @@
 class Loans::IsbnStepController < ApplicationController
-  before_action :require_user
-
   def show
     render 'loans/isbn_step'
   end

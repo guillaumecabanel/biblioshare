@@ -11,8 +11,8 @@
   </head>
 
   <body>
-    <% if current_user && (!controller_name.include?('step') && !action_name.include?('new')) %>
-      <div class="user-avatar"><%= current_user.initials %></div>
+    <% if current_user && display_menu? %>
+      <%= link_to current_user.initials, settings_path, class: "user-avatar" %>
       <nav>
         <ul>
           <li><%= link_to_unless_current(t(".home"), root_path){ |name| tag.p name } %></li>
@@ -21,6 +21,8 @@
         </ul>
       </nav>
     <% end %>
+
+    <p class="alert"><%= alert %></p>
 
     <div>
       <%= yield %>
