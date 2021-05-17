@@ -1,17 +1,27 @@
-<%= form_with model: @loan do |f| %>
+<%= link_to loans_isbn_step_path, class: "back-link" do %>
+  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>
+<% end %>
+
+<%= form_with model: @loan, style: "margin-top: 2rem" do |f| %>
   <%= f.hidden_field :borrower_id, value: @loan.borrower_id %>
   <%= f.hidden_field :isbn, value: @loan.isbn %>
   <%= f.hidden_field :title, value: @loan.title %>
   <%= f.hidden_field :author, value: @loan.author %>
   <%= f.hidden_field :picture_url, value: @loan.picture_url %>
 
-  <div>
-    <%= image_tag @loan.picture_url, title: @loan.title %>
-    <%= t(".loan") %>
-    <strong><%= @loan.title %></strong>
-    (<%= @loan.author %>)
-    <%= t("to") %> <%= @loan.borrower.full_name %>?
-  </div>
+  <section class="loan">
+    <%= image_tag @loan.picture_url.presence || "https://via.placeholder.com/180x260", title: @loan.title %>
 
-  <%= f.submit %>
+    <div class="right">
+      <p><%= t(".loan_to?_html", name: @loan.borrower.full_name) %></p>
+
+      <%= f.submit class: 'action' %>
+
+      <div class="details">
+        <div class="title"><%= @loan.title %></div>
+        <div class="author"><%= @loan.author %></div>
+      </div>
+    </div>
+  </section>
+
 <% end %>

@@ -1,8 +1,11 @@
-<section id="<%= dom_id(borrowed_book) %>" style="display: flex; align-items: center">
-  <%= image_tag borrowed_book.picture_url || "https://via.placeholder.com/180x260", title: borrowed_book.title %>
-  <p>
-    <strong><%= borrowed_book.title %></strong>
-    (<%= borrowed_book.author %>)
-    <%= t(".borrowed_from") %> <%= borrowed_book.lender.full_name %>
-  </p>
+<section id="<%= dom_id(borrowed_book) %>" class="loan">
+  <%= image_tag borrowed_book.picture_url.presence || "https://via.placeholder.com/180x260", title: borrowed_book.title, height: 260, width: 180 %>
+
+  <div class="right">
+    <p><%= t(".borrowed_from") %> <span class="borrower"><%= borrowed_book.lender.full_name %></span></p>
+    <div class="details">
+      <div class="title"><%= borrowed_book.title %></div>
+      <div class="author"><%= borrowed_book.author %></div>
+    </div>
+  </div>
 </section>

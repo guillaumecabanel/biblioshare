@@ -6,7 +6,7 @@ en:
       borrowed_books: Borrowed books
   borrowed_books:
     borrowed_book:
-      borrowed_from: borrowed from
+      borrowed_from: Borrowed from
     index:
       title: Borrowed books
       no_data: No borrowed books.
@@ -23,7 +23,7 @@ en:
       no_data: No ongoing loans.
       loan_a_book: Loan a book!
     new:
-      loan: Loan
+      loan_to?_html: "Loan to <span class=\"borrower\">%{name}</span>?"
     borrower_step:
       title: Select Borrower
     isbn_step:

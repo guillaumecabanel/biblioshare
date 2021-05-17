@@ -1,0 +1,17 @@
+.fa-barcode-read {
+  height: 2rem;
+  margin-left: 1rem;
+  animation: blink-1 3s infinite both;
+}
+
+@keyframes blink-1 {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0;
+  }
+}
