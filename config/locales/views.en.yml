@@ -23,7 +23,10 @@ en:
       no_data: No ongoing loans.
       loan_a_book: Loan a book!
     new:
+      title: Confirm new loan
+      create: Confirm
       loan_to?_html: "Loan to <span class=\"borrower\">%{name}</span>?"
+
     borrower_step:
       title: Select Borrower
     isbn_step:

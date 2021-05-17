@@ -2,6 +2,10 @@
   <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>
 <% end %>
 
+<h2 style="margin: 1rem 0">
+  <%= t(".title") %>
+</h2>
+
 <%= form_with model: @loan, style: "margin-top: 2rem" do |f| %>
   <%= f.hidden_field :borrower_id, value: @loan.borrower_id %>
   <%= f.hidden_field :isbn, value: @loan.isbn %>
@@ -15,7 +19,7 @@
     <div class="right">
       <p><%= t(".loan_to?_html", name: @loan.borrower.full_name) %></p>
 
-      <%= f.submit class: 'action' %>
+      <%= f.submit t('.create'), class: 'action' %>
 
       <div class="details">
         <div class="title"><%= @loan.title %></div>
