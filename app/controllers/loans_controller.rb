@@ -79,7 +79,7 @@ class LoansController < ApplicationController
     response = HTTParty.get("https://openlibrary.org/api/volumes/brief/isbn/#{@isbn}.json")
     book_data = JSON.parse(response.body, symbolize_names: true)
 
-    return if !book_data.present?
+    return {} if !book_data.present?
 
     book = book_data[:records].values.first[:data]
 
