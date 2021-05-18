@@ -59,8 +59,7 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "biblioshare_production"
 
-  # TODO
-  config.action_mailer.default_url_options = { host: '', port: 3000 }
+  config.action_mailer.delivery_method = :mailjet
 
   config.action_mailer.perform_caching = false
 

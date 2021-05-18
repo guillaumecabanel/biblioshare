@@ -30,6 +30,7 @@ gem 'stimulus-rails'
 gem 'turbo-rails'
 gem 'devise'
 gem 'devise-i18n'
+gem 'mailjet'
 
 group :development, :test do
   gem 'pry-byebug'
